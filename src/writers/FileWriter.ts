@@ -6,6 +6,7 @@ export class FileWriter implements Writer {
   constructor(
     private readonly maintainStructure: boolean,
     private readonly outputDirectory: string,
+    private readonly suffix: string,
     private readonly includeDirectory: boolean = false
   ) {}
 
@@ -17,7 +18,7 @@ export class FileWriter implements Writer {
       directory = path.join(directory, fn);
       outFile = path.join(directory, 'Steps.ts');
     } else {
-      outFile = outFile.replace(/\.features?$/, '.spec.ts');
+      outFile = outFile.replace(/\.features?$/, this.suffix);
     }
     if (existsSync(outFile)) {
       return false;
