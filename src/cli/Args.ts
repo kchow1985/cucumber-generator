@@ -10,6 +10,7 @@ export interface Args {
   verbose: boolean;
   includeDirectory: boolean;
   maintainStructure: boolean;
+  suffix: string;
 }
 
 export const args: Args = yargs
@@ -35,6 +36,8 @@ export const args: Args = yargs
   .default('verbose', false)
   .boolean('includeDirectory')
   .default('includeDirectory', false)
+  .string('suffix')
+  .default('suffix', '.spec.ts')
   .describe(
     'includeDirectory',
     'If present, the file is generated into the directory with same name as feature name (within output folder)'
