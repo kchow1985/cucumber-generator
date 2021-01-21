@@ -31,7 +31,7 @@ export const runner = async (args: Args) => {
   const result = await generator.generate();
   const writer: Writer =
     args.output == 'file'
-      ? new FileWriter(args.maintainStructure, outputDirectory, args.includeDirectory)
+      ? new FileWriter(args.maintainStructure, outputDirectory, args.suffix, args.includeDirectory)
       : new StdioWriter();
   const processed: string[] = (
     await Promise.all(
